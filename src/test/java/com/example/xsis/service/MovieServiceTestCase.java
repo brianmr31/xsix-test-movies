@@ -33,7 +33,7 @@ public class MovieServiceTestCase {
     private MovieService movieService = new MovieServiceImpl( movieRepository );
 
     @Test
-    public void test_method_findAllMovies(){
+    public void MovieService_Positif_findAllMovies(){
         List<MovieEntity> mockdata = new ArrayList<MovieEntity>();
         MovieEntity tmp = new MovieEntity();
         tmp.setId(1);
@@ -52,7 +52,7 @@ public class MovieServiceTestCase {
     
 
     @Test
-    public void test_method_getMoviesbyId() throws Exception{
+    public void MovieService_Positif_getMoviesbyId() throws Exception{
         int id = 1;
 
         MovieEntity mockdata = new MovieEntity();
@@ -70,7 +70,7 @@ public class MovieServiceTestCase {
     }
     
     @Test
-    public void test_negatif_getMoviesbyId() {
+    public void MovieService_Negatif_getMoviesbyId() {
         int id = 999; // input disalahkan
         Exception error = new Exception("Bad Request Error");
         Exception thrown = assertThrows(Exception.class, ()-> { this.movieService.getMoviesbyId(id);}, "Bad Request Error");
@@ -78,7 +78,7 @@ public class MovieServiceTestCase {
     }
 
     @Test
-    public void test_positif_save() {
+    public void MovieService_Positif_save() {
 
         MoveDto mockdata = new MoveDto();
         mockdata.setId(1);
