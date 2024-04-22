@@ -16,6 +16,10 @@ public class MovieServiceImpl implements MovieService {
     @Autowired
     private MovieRepository movieRepository;
 
+    public MovieServiceImpl(MovieRepository movieRepository){
+        this.movieRepository = movieRepository;
+    }
+
     @Override
     public List<MovieEntity> findAllMovies() {
         return this.movieRepository.findAll();
@@ -25,7 +29,7 @@ public class MovieServiceImpl implements MovieService {
     public MovieEntity getMoviesbyId(int id) throws Exception {
         MovieEntity tmp = this.movieRepository.getMoviesById(id);
         if( tmp == null ){
-            throw new Exception("Bad Request Erro");
+            throw new Exception("Bad Request Error");
         }
         return this.movieRepository.getMoviesById(id);
     }
@@ -33,7 +37,10 @@ public class MovieServiceImpl implements MovieService {
     @Override
     public String save(MoveDto data) throws ParseException {
         try{
-            this.movieRepository.save(data.toEntity());
+            MovieEntity tmp = this.movieRepository.save(data.toEntity());
+            if(tmp == null ) {
+                return "ERROR";
+            }
         } catch (Exception e) {
             e.printStackTrace();
             return "ERROR";
