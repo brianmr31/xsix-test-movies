@@ -1,4 +1,4 @@
-package com.example.xsis;
+package com.example.xsis.dto;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

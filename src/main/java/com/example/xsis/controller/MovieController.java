@@ -1,4 +1,4 @@
-package com.example.xsis;
+package com.example.xsis.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -11,6 +11,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.RestController;
+
+import com.example.xsis.dto.MessageRes;
+import com.example.xsis.dto.MoveDto;
+import com.example.xsis.entity.MovieEntity;
+import com.example.xsis.service.MovieService;
 
 import jakarta.validation.Valid;
 

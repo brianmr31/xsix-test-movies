@@ -1,10 +1,14 @@
-package com.example.xsis;
+package com.example.xsis.service;
 
 import java.text.ParseException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.example.xsis.dto.MoveDto;
+import com.example.xsis.entity.MovieEntity;
+import com.example.xsis.repository.MovieRepository;
 
 @Service
 public class MovieServiceImpl implements MovieService {

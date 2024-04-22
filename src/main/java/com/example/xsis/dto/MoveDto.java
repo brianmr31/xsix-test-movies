@@ -1,8 +1,9 @@
-package com.example.xsis;
+package com.example.xsis.dto;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
+import com.example.xsis.entity.MovieEntity;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import jakarta.validation.constraints.NotEmpty;

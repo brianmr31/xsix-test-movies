@@ -1,4 +1,4 @@
-package com.example.xsis;
+package com.example.xsis.entity;
 
 import jakarta.persistence.Id;
 import lombok.Getter;
