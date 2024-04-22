@@ -12,7 +12,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.example.xsis.dto.MoveDto;
+import com.example.xsis.dto.MovieDto;
 import com.example.xsis.entity.MovieEntity;
 import com.example.xsis.repository.MovieRepository;
 
@@ -80,7 +80,7 @@ public class MovieServiceTestCase {
     @Test
     public void MovieService_Positif_save() {
 
-        MoveDto mockdata = new MoveDto();
+        MovieDto mockdata = new MovieDto();
         mockdata.setId(1);
         mockdata.setTitle("Hello World");
         mockdata.setDescription("The Hello World Movie");

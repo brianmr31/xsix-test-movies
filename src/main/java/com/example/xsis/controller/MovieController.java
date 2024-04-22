@@ -13,7 +13,7 @@ import java.util.List;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.xsis.dto.MessageRes;
-import com.example.xsis.dto.MoveDto;
+import com.example.xsis.dto.MovieDto;
 import com.example.xsis.entity.MovieEntity;
 import com.example.xsis.service.MovieService;
 
@@ -36,13 +36,13 @@ public class MovieController {
     }
 
     @PostMapping("/api/v1/Movies")
-    public MessageRes addMovies(@Valid @RequestBody MoveDto movie) throws Exception{
+    public MessageRes addMovies(@Valid @RequestBody MovieDto movie) throws Exception{
         String result = this.movieService.save(movie);
         return new MessageRes(result);
     }
 
     @PatchMapping("/api/v1/Movies")
-    public MessageRes putMovies(@Valid @RequestBody MoveDto movie) throws Exception{
+    public MessageRes putMovies(@Valid @RequestBody MovieDto movie) throws Exception{
         String result = this.movieService.save(movie);
         return new MessageRes(result);
     }

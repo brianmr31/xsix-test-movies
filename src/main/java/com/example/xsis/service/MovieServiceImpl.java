@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.xsis.dto.MoveDto;
+import com.example.xsis.dto.MovieDto;
 import com.example.xsis.entity.MovieEntity;
 import com.example.xsis.repository.MovieRepository;
 
@@ -35,7 +35,7 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public String save(MoveDto data) throws ParseException {
+    public String save(MovieDto data) throws ParseException {
         try{
             MovieEntity tmp = this.movieRepository.save(data.toEntity());
             if(tmp == null ) {

@@ -16,7 +16,7 @@ import com.example.xsis.entity.MovieEntity;
 
 @DataJpaTest
 @AutoConfigureTestDatabase( connection = EmbeddedDatabaseConnection.H2 )
-public class MoveRepositoryTestCase {
+public class MovieRepositoryTestCase {
     
     @Autowired
     private MovieRepository movieRepository;
