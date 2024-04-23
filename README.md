@@ -18,16 +18,16 @@ spring.datasource.password=password
 Untuk Request Api ada di postman file Xsis.postman_collection.json
 
 terdiri dari 5 api:
-    1. GET localhost:8080/api/v1/Movies untuk list
-    2. GET localhost:8080/api/v1/Movies/<id> untuk get detail
-    3. POST localhost:8080/api/v1/Movies untuk recreate atau update semua data
-    4. PATCH localhost:8080/api/v1/Movies untuk Patching kolom tertentu
-    5. DEL localhost:8080/api/v1/Movies/<id> untuk hapus berdasarkan id
+    - GET localhost:8080/api/v1/Movies untuk list
+    - GET localhost:8080/api/v1/Movies/<id> untuk get detail
+    - POST localhost:8080/api/v1/Movies untuk recreate atau update semua data
+    - PATCH localhost:8080/api/v1/Movies untuk Patching kolom tertentu
+    - DEL localhost:8080/api/v1/Movies/<id> untuk hapus berdasarkan id
 
 source code ini terdiri 2 package :
-    1. main / com.example.xsis -> berisi source code 
-        -. config -> untuk setting handler
-    2. test / com.example.xsis -> berisi test code
-        -. controller -> untuk unit test controller
-        -. service -> untuk unit test controller
-        -. repository -> untuk unit test controller
+    - main / com.example.xsis -> berisi source code 
+        - config -> untuk setting handler
+    - test / com.example.xsis -> berisi test code
+        - controller -> untuk unit test controller
+        - service -> untuk unit test controller
+        - repository -> untuk unit test controller
