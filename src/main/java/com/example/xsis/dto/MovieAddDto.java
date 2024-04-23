@@ -15,7 +15,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class MovieDto {
+public class MovieAddDto {
 
     private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     private int id;
@@ -30,11 +30,13 @@ public class MovieDto {
     
     private String image;
 
+    @NotEmpty(message = "created_at is mandatory")
     @Pattern(regexp = "^[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}$", 
         message = "Invalid characters date yyyy-MM-dd HH:mm:ss")
     @JsonProperty("created_at")
     private String createdAt;
 
+    @NotEmpty(message = "updated_at is mandatory")
     @Pattern(regexp = "^[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}$", 
         message = "Invalid characters date yyyy-MM-dd HH:mm:ss")
     @JsonProperty("updated_at")

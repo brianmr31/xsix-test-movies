@@ -13,7 +13,8 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 
-import com.example.xsis.dto.MovieDto;
+import com.example.xsis.dto.MovieAddDto;
+import com.example.xsis.dto.MoviePatchDto;
 import com.example.xsis.entity.MovieEntity;
 import com.example.xsis.service.MovieService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -25,7 +26,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.patch;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -84,7 +84,7 @@ public class MovieControllerTestCase {
 
     @Test
     public void MovieControllerTestCase_Positive_addMovies(){
-        MovieDto tmp = new MovieDto();
+        MovieAddDto tmp = new MovieAddDto();
         tmp.setTitle("Hello World");
         tmp.setDescription("The Hello World Movie");
         tmp.setImage("");
@@ -108,9 +108,9 @@ public class MovieControllerTestCase {
     }
 
     @Test
-    public void MovieControllerTestCase_Positive_putMovies(){
-        MovieDto tmp = new MovieDto();
-        tmp.setId(88);
+    public void MovieControllerTestCase_Positive_patchMovies(){
+        MoviePatchDto tmp = new MoviePatchDto();
+        tmp.setId(2);
         tmp.setTitle("Hello World");
         tmp.setDescription("The Hello World Movie");
         tmp.setImage("");
@@ -119,7 +119,7 @@ public class MovieControllerTestCase {
         tmp.setUpdatedAt("2022-08-01 10:56:31");
 
         try {
-            Mockito.when( movieService.save(any()) ).thenReturn( "OK" );
+            Mockito.when( movieService.patch(any()) ).thenReturn( "OK" );
 
             ObjectMapper mapper = new ObjectMapper();
             ResultActions result  = mockMvc.perform( 
@@ -135,7 +135,7 @@ public class MovieControllerTestCase {
 
     @Test
     public void MovieControllerTestCase_Positive_delMovies(){
-        MovieDto tmp = new MovieDto();
+        MovieAddDto tmp = new MovieAddDto();
         tmp.setId(88);
         tmp.setTitle("Hello World");
         tmp.setDescription("The Hello World Movie");

@@ -12,13 +12,15 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.example.xsis.dto.MovieDto;
+import com.example.xsis.dto.MovieAddDto;
+import com.example.xsis.dto.MoviePatchDto;
 import com.example.xsis.entity.MovieEntity;
 import com.example.xsis.repository.MovieRepository;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.doNothing;
 
@@ -72,15 +74,15 @@ public class MovieServiceTestCase {
     @Test
     public void MovieService_Negatif_getMoviesbyId() {
         int id = 999; // input disalahkan
-        Exception error = new Exception("Bad Request Error");
-        Exception thrown = assertThrows(Exception.class, ()-> { this.movieService.getMoviesbyId(id);}, "Bad Request Error");
+        Exception error = new Exception("Bad Request Error, Id Not Found");
+        Exception thrown = assertThrows(Exception.class, ()-> { this.movieService.getMoviesbyId(id);}, "Bad Request Error, Id Not Found");
         assertEquals(thrown.getMessage(), error.getMessage() );
     }
 
     @Test
     public void MovieService_Positif_save() {
 
-        MovieDto mockdata = new MovieDto();
+        MovieAddDto mockdata = new MovieAddDto();
         mockdata.setId(1);
         mockdata.setTitle("Hello World");
         mockdata.setDescription("The Hello World Movie");
@@ -97,6 +99,32 @@ public class MovieServiceTestCase {
             String result = this.movieService.save(mockdata);
             assertEquals( result, "OK");
         } catch (ParseException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void MovieService_Positif_patch() {
+
+        MoviePatchDto mockdata = new MoviePatchDto();
+        mockdata.setId(1);
+        mockdata.setTitle("Hello World");
+        mockdata.setDescription("The Hello World Movie");
+        mockdata.setImage("");
+        mockdata.setRating(9.1f);
+        mockdata.setCreatedAt("2022-08-13 09:30:23");
+        mockdata.setUpdatedAt("2022-08-13 09:30:23");
+
+        MovieEntity mockEntity1;
+        try {
+            mockEntity1 = mockdata.toEntity();;
+            given( movieRepository.getMoviesById(anyInt()) ).willReturn(mockEntity1);
+            given( movieRepository.save(any()) ).willReturn(mockEntity1);
+
+            String result = this.movieService.patch(mockdata);
+            assertEquals( result, "OK");
+        } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
