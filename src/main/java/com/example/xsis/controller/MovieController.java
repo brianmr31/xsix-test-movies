@@ -12,6 +12,7 @@ import java.util.List;
 
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.xsis.config.BadRequestException;
 import com.example.xsis.dto.MessageRes;
 import com.example.xsis.dto.MovieAddDto;
 import com.example.xsis.dto.MoviePatchDto;
@@ -32,7 +33,7 @@ public class MovieController {
     }
 
     @GetMapping("/api/v1/Movies/{id}")
-    public MovieEntity getMoviesById(@PathVariable Integer id) throws Exception{
+    public MovieEntity getMoviesById(@PathVariable Integer id) throws BadRequestException{
         return this.movieService.getMoviesbyId(id);
     }
 
@@ -43,7 +44,7 @@ public class MovieController {
     }
 
     @PatchMapping("/api/v1/Movies")
-    public MessageRes patchMovies(@Valid @RequestBody MoviePatchDto movie) throws Exception{
+    public MessageRes patchMovies(@Valid @RequestBody MoviePatchDto movie) throws BadRequestException{
         String result = this.movieService.patch(movie);
         return new MessageRes(result);
     }

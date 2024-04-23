@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 import jakarta.servlet.http.HttpServletRequest;
 
@@ -33,6 +34,19 @@ public class ErrorHandller{
     result.put("timestamp", sdf.format( new Date() ));
     result.put("error", errors);
 
+    return new ResponseEntity<>(result, HttpStatus.BAD_REQUEST);
+  }
+
+  @ExceptionHandler(BadRequestException.class)
+  public ResponseEntity<?> handleUserNotFoundException(BadRequestException exception, HttpServletRequest request) throws Exception {
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+
+    Map<String, Object> result = new HashMap<>();
+    result.put("path", request.getRequestURI() );
+    // result.put("error", "Bad Request");
+    result.put("status", 400 );
+    result.put("timestamp", sdf.format( new Date() ));
+    result.put("error", exception.getMessage() );
     return new ResponseEntity<>(result, HttpStatus.BAD_REQUEST);
   }
 }

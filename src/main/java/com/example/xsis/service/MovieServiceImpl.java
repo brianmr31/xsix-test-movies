@@ -28,7 +28,7 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public MovieEntity getMoviesbyId(int id) throws Exception {
+    public MovieEntity getMoviesbyId(int id) throws BadRequestException {
         MovieEntity tmp = this.movieRepository.getMoviesById(id);
         if( tmp == null ){
             throw new BadRequestException("Bad Request Error, Id Not Found");
