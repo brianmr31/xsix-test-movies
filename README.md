@@ -61,7 +61,7 @@ Project bisa di test dengan menjalankan perintah dibawah
 ```
 
 
-# Test project 
+# Build Package project 
 Project dibuild menjadi object jar dengan perintah dibawah
 ##  windows 
 ```
